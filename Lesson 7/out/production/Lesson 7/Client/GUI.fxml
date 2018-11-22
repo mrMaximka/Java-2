@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<HBox alignment="center" xmlns:fx="http://javafx.com/fxml" fx:controller="Client.Client">
+
+    <HBox fx:id="upperPanel">
+        <FlowPane orientation="VERTICAL">
+            <TextField  fx:id="loginField" HBox.hgrow="ALWAYS" promptText="Логин" focusTraversable="false"/>
+            <PasswordField fx:id="passwordField" promptText="Пароль" onAction="#tryToAuth" focusTraversable="false"/>
+            <Button fx:id="authBtn" text="Авторизоваться" onAction="#tryToAuth"/>
+            <Button fx:id="regBtn" text="Регистрация" onAction="#setRegistration"/>
+            <TextArea fx:id="errorMes" editable="false" maxWidth="250"/>
+        </FlowPane>
+    </HBox>
+
+    <HBox fx:id="regPane" managed="false" visible="false">
+        <FlowPane orientation="VERTICAL">
+            <TextField  fx:id="regField" HBox.hgrow="ALWAYS" promptText="Придумайте логин" focusTraversable="false"/>
+            <PasswordField fx:id="passRegField" promptText="Придумайте пароль" focusTraversable="false"/>
+            <TextField  fx:id="nickField" HBox.hgrow="ALWAYS" onAction="#tryToReg" promptText="Придумайте ник" focusTraversable="false"/>
+            <Button fx:id="setNick" text="Зарегистрироваться" onAction="#tryToReg"/>
+            <TextArea fx:id="errorMesReg" editable="false" maxWidth="250"/>
+        </FlowPane>
+    </HBox>
+
+    <BorderPane fx:id="chatPane" managed="false" visible="false">
+        <center>
+            <TextArea fx:id="chatArea" editable="false" wrapText="true"/>
+        </center>
+        <right>
+            <ListView fx:id="onlineList" prefWidth="90"/>
+        </right>
+        <bottom>
+            <BorderPane>
+                <center>
+                    <TextField fx:id="msgField" onAction="#sendMsg" promptText="Введите сообщение..." HBox.hgrow="ALWAYS"/>
+                </center>
+                <right>
+                    <Button text="Отправить" onAction="#sendMsg"/>
+                </right>
+            </BorderPane>
+        </bottom>
+
+    </BorderPane>
+
+</HBox>
